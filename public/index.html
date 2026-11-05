@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Agent Monitor</title>
+  <link rel="stylesheet" href="/style.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#agents">Skip to my agents</a>
+<main>
+  <header class="overview">
+    <div class="brand">
+      <div class="brand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v10H3V7Z"/><path d="M3 10h18"/></svg></div>
+      <div><h1>Agent Monitor</h1><p>Codex activity, at a glance.</p></div>
+    </div>
+    <section class="summary" aria-label="Activity summary">
+      <div class="metric"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="5" width="14" height="16" rx="2"/><path d="M9 5V3h6v2M9 10l1 1 2-2m-3 6 1 1 2-2m2-3h2m-2 5h2"/></svg><div><strong id="working-count">—</strong><span>Working</span></div></div>
+      <div class="metric attention-metric" title="Counts input requests and finished agents with Codex’s unread blue dot. Permission approval dialogs are not covered."><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v6m0 3v1"/></svg><div><strong id="attention-count">—</strong><span>Needs attention<small id="attention-caption">Reading attention status…</small></span></div></div>
+      <div class="metric"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><div><strong id="finished-count">—</strong><span>Recently finished<small>Last 24 hours</small></span></div></div>
+    </section>
+  </header>
+  <div class="toolbar">
+    <div class="list-label">My agents <span id="visible-count">0</span></div>
+    <div class="filters">
+      <label class="sr-only" for="project-filter">Project</label><select id="project-filter"><option value="">All projects</option></select>
+      <label class="sr-only" for="status-filter">Status</label><select id="status-filter"><option value="">All statuses</option><option value="attention">Needs attention</option><option value="working">Working</option><option value="completed">Completed</option><option value="interrupted">Interrupted</option><option value="stale">Stale / unknown</option><option value="idle">Earlier agents</option></select>
+      <div class="appearance-switch" role="group" aria-label="Appearance">
+        <button id="theme-light" type="button" aria-label="Light mode" aria-pressed="true"><span class="theme-icon" aria-hidden="true"></span>Light</button>
+        <button id="theme-dark" type="button" aria-label="Dark mode" aria-pressed="false"><span class="theme-icon" aria-hidden="true"></span>Dark</button>
+      </div>
+      <button id="fullscreen" type="button" class="view-button" aria-label="Enter fullscreen" aria-pressed="false"></button>
+      <button id="sound" class="icon-button" aria-label="Enable sound" title="Enable sound" aria-pressed="false"></button>
+      <details class="settings" id="settings">
+        <summary class="icon-button" aria-label="Settings" title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m9 3-1 3-3 1 1 3-2 2 2 2-1 3 3 1 1 3h6l1-3 3-1-1-3 2-2-2-2 1-3-3-1-1-3H9Z"/><circle cx="12" cy="12" r="3"/></svg></summary>
+        <div class="settings-panel">
+          <h2>Preferences</h2>
+          <label class="check-label"><input id="hide-idle" type="checkbox" checked> Hide earlier agents</label>
+          <label class="check-label"><input id="animate-agents" type="checkbox" checked> Animate agent thumbnails</label>
+          <a class="settings-button" href="/variants" target="_blank" rel="noopener">Preview all 20 thumbnail styles ↗</a>
+          <a class="settings-button" href="/variants?view=outfits" target="_blank" rel="noopener">Preview unique developer outfits ↗</a>
+          <label class="volume-label" for="volume">Sound volume <output id="volume-value">35%</output></label><input type="range" id="volume" min="0" max="100" value="35" aria-label="Alert volume">
+          <div class="settings-divider"></div>
+          <button id="test-complete" class="settings-button">Test completion bell</button>
+          <button id="test-attention" class="settings-button">Test attention bell</button>
+          <p class="settings-note">Completion: one bell. New input request: two notes. Enable sound once per page.</p>
+          <div class="settings-divider"></div>
+          <h2>About this reader</h2>
+          <p class="settings-note">Experimental, local, and read-only. Tracks explicit input questions and finished agents marked unread in Codex. Opening an agent in Codex clears its unread status on the next refresh. Permission approval dialogs and other input mechanisms are not covered. Failure coverage is incomplete.</p>
+          <p class="settings-note" id="source-info">Reading local journals every five seconds.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+  <p id="display-message" class="display-message" role="status" hidden></p>
+  <p id="demo-banner" class="display-message" role="status" hidden>Demo mode · Fictional sample agents. No Codex activity is being read.</p>
+  <div id="connection-error" class="error-banner" role="alert" hidden></div>
+  <section id="agents" class="chat-list" aria-label="My agents"><div class="empty-state">Reading your agents…</div></section>
+  <footer><span class="local-label"><span class="dot"></span> Local on this Mac</span><div class="connection" role="status"><span id="connection-label">Connecting…</span><span class="footer-separator">·</span><span id="last-refresh">Waiting for first refresh</span><button id="refresh" class="refresh-button" aria-label="Refresh now" title="Refresh now"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M6 7a7 7 0 0 1 12 0l2 5M4 12l2 5a7 7 0 0 0 12 0"/></svg></button></div></footer>
+  <p id="sound-message" class="sound-message" role="status"></p>
+</main>
+</body>
+</html>

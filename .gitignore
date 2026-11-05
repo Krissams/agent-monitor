@@ -1,0 +1,12 @@
+evidence/
+.DS_Store
+.runtime/
+.runtime-demo/
+__pycache__/
+*.pyc
+/public/assets/reference-artwork.png
+/CONNECTION-FINDINGS.md
+/EXPERIMENTAL-ADAPTER.md
+.env
+.env.*
+node_modules/
