@@ -133,6 +133,8 @@ Each style has its own outfit or accessories, color palette, desk tools, backgro
 
 An agent's outfit is a separate identity: active agents receive distinct garment/colorway reservations, so several Developers can still look different. Their clothing stays stable through refreshes, sorting, new runs, and role changes. Role tools and workspace details follow the selected task style. The gallery's **20 unique developer outfits** tab shows the wardrobe collection.
 
+Reservations are assigned across the full source list before filtering and also apply when an agent waves for input or an unread result. New active agents prefer different garment shapes; additional colorways keep complete outfits unique in larger groups. Outfit allocation is tested with 100 agents of the same role, including reloads, new runs, and invalid saved assignments.
+
 Open **Settings → Preview all 20 thumbnail styles**, or visit `/variants` on your running dashboard. The gallery includes its own theme and animation controls.
 
 ## Make it comfortable
