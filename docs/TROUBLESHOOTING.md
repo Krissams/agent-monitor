@@ -58,6 +58,14 @@ Browser fullscreen may require a direct click; on macOS, Control-Command-F also 
 
 Auto matching is a local heuristic based on the title, then the latest assistant update. Pick another role from the working card's dropdown. That choice stays in this browser and does not change the Codex agent or its instructions.
 
+## Multiple agents look alike, or an outfit changed
+
+Working agents, input requests and unread results have separate reserved garment/colorway identities, even when they share a role. Read completed agents intentionally share the gray sleeping illustration. Larger groups can share a garment shape while wearing different colors.
+
+Reload after updating the code, and open **Settings → Preview unique developer outfits** to check the wardrobe. Project/status filters do not release an outfit reservation. The role dropdown changes task tools and workspace details while retaining the reserved clothing.
+
+Reservations are saved per browser profile and dashboard origin. A different browser or port, or clearing site data, can produce a different assignment. Invalid or duplicated saved reservations are repaired automatically. See the [outfit guide](OUTFITS.md) for details.
+
 ## The desktop shortcut stopped working
 
 The shortcut points to the folder and Python executable used when it was created. Keep that folder in place. If you move the checkout or change Python installations, recreate the shortcut. The installer will leave an existing shortcut with different contents unchanged; remove or rename your old shortcut yourself first.

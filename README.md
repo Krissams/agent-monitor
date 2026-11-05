@@ -135,7 +135,9 @@ An agent's outfit is a separate identity: active agents receive distinct garment
 
 Reservations are assigned across the full source list before filtering and also apply when an agent waves for input or an unread result. New active agents prefer different garment shapes; additional colorways keep complete outfits unique in larger groups. Outfit allocation is tested with 100 agents of the same role, including reloads, new runs, and invalid saved assignments.
 
-Open **Settings → Preview all 20 thumbnail styles**, or visit `/variants` on your running dashboard. The gallery includes its own theme and animation controls.
+Open **Settings → Preview all 20 thumbnail styles**, or visit `/variants` on your running dashboard. Choose the **20 unique developer outfits** tab to compare several characters in the same role. The gallery includes its own theme and animation controls. See the [outfit guide](docs/OUTFITS.md) for the wardrobe, reservation rules, and browser storage details.
+
+![Twenty sample developers, each with a different outfit](docs/screenshots/outfits.png)
 
 ## Make it comfortable
 
@@ -194,7 +196,7 @@ The reader follows explicit run lifecycle events and completed assistant message
 - Server: [`server.py`](server.py), Python's standard library.
 - Reader: [`dashboard/journal.py`](dashboard/journal.py), read-only SQLite and JSONL.
 - Interface: [`public/app.js`](public/app.js), plain JavaScript and CSS.
-- Characters: [`public/mascot.js`](public/mascot.js) and [`public/roles.js`](public/roles.js), local SVGs.
+- Characters: [`public/mascot.js`](public/mascot.js) and [`public/roles.js`](public/roles.js), local SVGs; [`public/outfits.js`](public/outfits.js) reserves unique clothing identities.
 - Alert deduplication: [`public/alerts.js`](public/alerts.js).
 
 See [Monitoring](docs/MONITORING.md) for the signal contract, compatibility, persistence evidence, and remaining gaps.

@@ -6,6 +6,8 @@ The role artwork and shared mascot geometry are project-authored SVG code in `pu
 
 The characters are intentionally decorative. Typing and thinking poses illustrate a working state; they are not a claim about a model's current internal action or reasoning.
 
+The wardrobe contains twenty project-authored garment shapes with additional colorways. `public/outfits.js` keeps per-agent reservations separate from role artwork, allowing multiple developers or engineers to have different clothing. See the [outfit guide](OUTFITS.md) for the collection and behavior.
+
 ## Sleeping illustration
 
 `public/assets/sleeping-agent.png` is an AI-generated illustration created for Agent Monitor using OpenAI image generation, based on the project's cream-robot, hoodie, headset, and lavender-studio visual direction. Its prompt/provenance note is in `public/assets/sleeping-agent.md`. It is distributed with this project under the MIT license, without a claim of exclusivity over AI-generated visual elements.
@@ -22,6 +24,6 @@ To reproduce the dashboard screenshots:
 python3 server.py --demo --port 4318
 ```
 
-Open the demo in a browser, select Light or Dark, and capture the page. For the style collection, capture `/variants`. Screenshots are still frames from an animated interface.
+Open the demo in a browser, select Light or Dark, and capture the page. For the role collection, capture `/variants`; for `screenshots/outfits.png`, capture `/variants?view=outfits`. The outfit collection shows twenty sample developers, without live status data. Screenshots are still frames from an animated interface.
 
 When contributing new screenshots, use demo mode and review them before publication. Do not replace these with screenshots of private work.
