@@ -10,3 +10,25 @@ __pycache__/
 .env
 .env.*
 node_modules/
+
+# Local Codex data, credentials, databases, and signing material.
+.codex/
+auth.json
+credentials.json
+*credentials*.json
+*service-account*.json
+tokens.json
+secrets.json
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+id_rsa
+id_ecdsa
+id_ed25519

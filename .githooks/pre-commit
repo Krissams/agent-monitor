@@ -1,0 +1,8 @@
+#!/bin/sh
+# Optional local guard. Enable it only after installing Gitleaks; see SECURITY.md.
+set -eu
+if ! command -v gitleaks >/dev/null 2>&1; then
+    printf '%s\n' 'Gitleaks is required by this hook. Install it or review SECURITY.md.' >&2
+    exit 1
+fi
+exec gitleaks git --pre-commit --staged --redact=100 --ignore-gitleaks-allow --no-banner
